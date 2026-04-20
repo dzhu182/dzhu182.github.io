@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dan Zhu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f5f2ec;
+      --ink: #1a1814;
+      --muted: #8a8070;
+      --accent: #c8603a;
+      --line: #d4cfc6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 3rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero h1 {
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      margin-top: 3rem;
+      font-size: 1.4rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
+    .hero-cta {
+      margin-top: 3.5rem;
+      display: flex;
+      gap: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.8s;
+    }
+
+    .btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+
+    .btn-accent:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    /* DIVIDER */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--line);
+      margin: 0 3rem;
+      width: calc(100% - 6rem);
+    }
+
+    /* SECTIONS PREVIEW */
+    .sections {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-item {
+      padding: 2.5rem 2rem 2.5rem 0;
+      border-right: 1px solid var(--line);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .section-item:last-child { border-right: none; padding-right: 0; }
+    .section-item:not(:first-child) { padding-left: 2rem; }
+
+    .section-item:hover .section-arrow { transform: translateX(4px); color: var(--accent); }
+
+    .section-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-arrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--muted);
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      .sections { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem; }
+      .section-item { border-right: none; border-bottom: 1px solid var(--line); padding: 2rem 0; }
+      .section-item:last-child { border-bottom: none; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-name">Dan Zhu</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="consulting.html">Consulting</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="writings.html">Writings</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <p class="hero-label">Welcome</p>
+      <h1>Dan<br><em>Zhu</em></h1>
+      <p class="hero-sub">Thinker, writer, consultant. Exploring ideas at the edges of things.</p>
+      <div class="hero-cta">
+        <a href="about.html" class="btn btn-accent">About me</a>
+        <a href="consulting.html" class="btn">Work together</a>
+      </div>
+    </section>
+
+    <div class="sections">
+      <a href="about.html" class="section-item">
+        <p class="section-num">01</p>
+        <h2 class="section-title">About</h2>
+        <p class="section-desc">Who I am and what I care about.</p>
+        <span class="section-arrow">→</span>
+      </a>
+      <a href="consulting.html" class="section-item">
+        <p class="section-num">02</p>
+        <h2 class="section-title">Consulting</h2>
+        <p class="section-desc">How we can work together.</p>
+        <span class="section-arrow">→</span>
+      </a>
+      <a href="blog.html" class="section-item">
+        <p class="section-num">03</p>
+        <h2 class="section-title">Blog</h2>
+        <p class="section-desc">Thoughts, notes, and updates.</p>
+        <span class="section-arrow">→</span>
+      </a>
+      <a href="writings.html" class="section-item">
+        <p class="section-num">04</p>
+        <h2 class="section-title">Writings</h2>
+        <p class="section-desc">Essays and longer reflections.</p>
+        <span class="section-arrow">→</span>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Dan Zhu</p>
+    <p>danzhu.org</p>
+  </footer>
+
+</body>
+</html>
