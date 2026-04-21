@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dan Zhu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #f5f2ec;
-      --ink: #1a1814;
-      --muted: #8a8070;
-      --accent: #c8603a;
-      --line: #d4cfc6;
+      --bg: #f0f6f8;
+      --ink: #0d2b33;
+      --muted: #5a8a96;
+      --accent: #046a87;
+      --line: #c0d8e0;
     }
 
     html { scroll-behavior: smooth; }
@@ -22,7 +22,7 @@
     body {
       background: var(--bg);
       color: var(--ink);
-      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-family: 'Open Sans', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
     }
@@ -41,9 +41,9 @@
     }
 
     .nav-name {
-      font-family: 'DM Mono', monospace;
+      font-family: 'Open Sans', sans-serif;
       font-size: 0.8rem;
-      font-weight: 300;
+      font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--ink);
@@ -57,9 +57,9 @@
     }
 
     .nav-links a {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 300;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
@@ -81,7 +81,7 @@
     }
 
     .hero-label {
-      font-family: 'DM Mono', monospace;
+      font-family: 'Open Sans', sans-serif;
       font-size: 0.72rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -91,13 +91,21 @@
       animation: fadeUp 0.8s ease forwards 0.2s;
     }
 
-    .hero h1 {
-      font-size: clamp(4rem, 10vw, 9rem);
-      font-weight: 300;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
+    .hero-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: end;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .hero h1 {
+      font-family: 'Open Sans', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
     }
 
     .hero h1 em {
@@ -105,28 +113,41 @@
       color: var(--accent);
     }
 
-    .hero-sub {
-      margin-top: 3rem;
-      font-size: 1.4rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--muted);
-      max-width: 480px;
-      line-height: 1.6;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.6s;
+    .hero-bio {
+      border: 1px solid var(--line);
+      padding: 2rem 2.25rem;
+      background: transparent;
     }
+
+    .hero-bio p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .hero-bio p:last-child { margin-bottom: 0; }
+
+    .hero-bio a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .hero-bio a:hover { border-bottom-color: var(--accent); }
 
     .hero-cta {
       margin-top: 3.5rem;
       display: flex;
       gap: 1.5rem;
       opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.8s;
+      animation: fadeUp 0.8s ease forwards 0.6s;
     }
 
     .btn {
-      font-family: 'DM Mono', monospace;
+      font-family: 'Open Sans', sans-serif;
       font-size: 0.72rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -153,70 +174,64 @@
       color: var(--accent);
     }
 
-    /* DIVIDER */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: var(--line);
-      margin: 0 3rem;
-      width: calc(100% - 6rem);
-    }
-
-    /* SECTIONS PREVIEW */
-    .sections {
+    /* HORIZONTAL SECTIONS */
+    .page-sections {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 6rem 3rem;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+      padding: 0 3rem 6rem;
+    }
+
+    .page-section {
       border-top: 1px solid var(--line);
+      padding: 3.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 2rem;
     }
 
-    .section-item {
-      padding: 2.5rem 2rem 2.5rem 0;
-      border-right: 1px solid var(--line);
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      transition: all 0.2s;
+    .page-section:last-child {
+      border-bottom: 1px solid var(--line);
     }
 
-    .section-item:last-child { border-right: none; padding-right: 0; }
-    .section-item:not(:first-child) { padding-left: 2rem; }
+    .page-section-left {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      min-width: 220px;
+    }
 
-    .section-item:hover .section-arrow { transform: translateX(4px); color: var(--accent); }
-
-    .section-num {
-      font-family: 'DM Mono', monospace;
+    .page-section-num {
       font-size: 0.65rem;
       letter-spacing: 0.15em;
+      text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 1.5rem;
     }
 
-    .section-title {
+    .page-section-title {
       font-size: 1.6rem;
-      font-weight: 300;
-      line-height: 1.2;
-      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--ink);
     }
 
-    .section-desc {
-      font-size: 0.95rem;
-      font-style: italic;
+    .page-section-desc {
+      font-size: 0.9rem;
       color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      flex: 1;
     }
 
-    .section-arrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--muted);
-      transition: all 0.2s;
-      display: inline-block;
+    .page-section-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
     }
+
+    .page-section-link:hover { opacity: 0.7; }
 
     /* FOOTER */
     footer {
@@ -230,7 +245,7 @@
     }
 
     footer p {
-      font-family: 'DM Mono', monospace;
+      font-family: 'Open Sans', sans-serif;
       font-size: 0.68rem;
       letter-spacing: 0.1em;
       color: var(--muted);
@@ -245,9 +260,10 @@
       nav { padding: 1.25rem 1.5rem; }
       .nav-links { gap: 1.5rem; }
       .hero { padding: 7rem 1.5rem 3rem; }
-      .sections { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem; }
-      .section-item { border-right: none; border-bottom: 1px solid var(--line); padding: 2rem 0; }
-      .section-item:last-child { border-bottom: none; }
+      .hero-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      .page-sections { padding: 0 1.5rem 4rem; }
+      .page-section { flex-direction: column; gap: 0.75rem; }
+      .page-section-left { min-width: unset; }
       footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
@@ -258,48 +274,56 @@
     <a href="index.html" class="nav-name">Dan Zhu</a>
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
-      <li><a href="consulting.html">Consulting</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="writings.html">Writings</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="writing.html">Writing</a></li>
+      <li><a href="life.html">Life</a></li>
     </ul>
   </nav>
 
   <main>
     <section class="hero">
       <p class="hero-label">Welcome</p>
-      <h1>Dan<br><em>Zhu</em></h1>
-      <p class="hero-sub">Thinker, writer, consultant. Exploring ideas at the edges of things.</p>
+      <div class="hero-top">
+        <h1>Hi, I'm <em>Dan Zhu</em></h1>
+        <div class="hero-bio">
+          <p>I'm a graduate student at Stanford University studying healthcare and technology. Before Stanford, I was a consultant at Boston Consulting Group.</p>
+          <p>In 2023, I graduated from UC Berkeley with degrees in Data Science and Business Administration.</p>
+          <p>To reach me, email me at <a href="mailto:danielzhuwork@gmail.com">danielzhuwork@gmail.com</a> or <a href="mailto:danielzhulife@gmail.com">danielzhulife@gmail.com</a>.</p>
+        </div>
+      </div>
       <div class="hero-cta">
-        <a href="about.html" class="btn btn-accent">About me</a>
-        <a href="consulting.html" class="btn">Work together</a>
+        <a href="about.html" class="btn btn-accent">More about me</a>
+        <a href="work.html" class="btn">Work together</a>
       </div>
     </section>
 
-    <div class="sections">
-      <a href="about.html" class="section-item">
-        <p class="section-num">01</p>
-        <h2 class="section-title">About</h2>
-        <p class="section-desc">Who I am and what I care about.</p>
-        <span class="section-arrow">→</span>
-      </a>
-      <a href="consulting.html" class="section-item">
-        <p class="section-num">02</p>
-        <h2 class="section-title">Consulting</h2>
-        <p class="section-desc">How we can work together.</p>
-        <span class="section-arrow">→</span>
-      </a>
-      <a href="blog.html" class="section-item">
-        <p class="section-num">03</p>
-        <h2 class="section-title">Blog</h2>
-        <p class="section-desc">Thoughts, notes, and updates.</p>
-        <span class="section-arrow">→</span>
-      </a>
-      <a href="writings.html" class="section-item">
-        <p class="section-num">04</p>
-        <h2 class="section-title">Writings</h2>
-        <p class="section-desc">Essays and longer reflections.</p>
-        <span class="section-arrow">→</span>
-      </a>
+    <div class="page-sections">
+      <div class="page-section">
+        <div class="page-section-left">
+          <span class="page-section-num">02</span>
+          <span class="page-section-title">Work</span>
+        </div>
+        <p class="page-section-desc">Consulting, projects, and professional experience.</p>
+        <a href="work.html" class="page-section-link">View all →</a>
+      </div>
+
+      <div class="page-section">
+        <div class="page-section-left">
+          <span class="page-section-num">03</span>
+          <span class="page-section-title">Writing</span>
+        </div>
+        <p class="page-section-desc">Essays, thoughts, and reflections.</p>
+        <a href="writing.html" class="page-section-link">View all →</a>
+      </div>
+
+      <div class="page-section">
+        <div class="page-section-left">
+          <span class="page-section-num">04</span>
+          <span class="page-section-title">Life</span>
+        </div>
+        <p class="page-section-desc">Outside of work.</p>
+        <a href="life.html" class="page-section-link">View all →</a>
+      </div>
     </div>
   </main>
 
