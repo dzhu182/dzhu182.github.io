@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Life — Dan Zhu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #f0f6f8; --ink: #0d2b33; --muted: #5a8a96; --accent: #046a87; --line: #c0d8e0; }
+    body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', sans-serif; min-height: 100vh; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; background: var(--bg); border-bottom: 1px solid var(--line); }
+    .nav-name { font-family: 'Open Sans', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: 'Open Sans', sans-serif; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .page { max-width: 1100px; margin: 0 auto; padding: 10rem 3rem 6rem; }
+    .page-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
+    .page-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 600; line-height: 1.1; margin-bottom: 1.5rem; }
+    .page-title em { font-style: italic; color: var(--accent); font-weight: 300; }
+    .page-intro { font-size: 1.05rem; font-style: italic; color: var(--muted); max-width: 520px; line-height: 1.7; margin-bottom: 4rem; }
+    .life-list { border-top: 1px solid var(--line); }
+    .life-item { display: grid; grid-template-columns: 180px 1fr; gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; transition: all 0.2s; }
+    .life-item:hover .life-title { color: var(--accent); }
+    .life-item:hover .life-arrow { transform: translateX(4px); color: var(--accent); }
+    .life-date { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+    .life-tag { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+    .life-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; transition: color 0.2s; }
+    .life-excerpt { font-size: 0.92rem; font-style: italic; color: var(--muted); line-height: 1.7; margin-bottom: 0.75rem; }
+    .life-arrow { font-size: 0.75rem; color: var(--muted); transition: all 0.2s; display: inline-block; }
+    footer { border-top: 1px solid var(--line); padding: 2rem 3rem; display: flex; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
+    footer p { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); }
+    @media (max-width: 768px) { nav { padding: 1.25rem 1.5rem; } .nav-links { gap: 1.5rem; } .page { padding: 7rem 1.5rem 4rem; } .life-item { grid-template-columns: 1fr; gap: 0.5rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-name">Dan Zhu</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="writing.html">Writing</a></li>
+      <li><a href="life.html" class="active">Life</a></li>
+    </ul>
+  </nav>
+
+  <main class="page">
+    <p class="page-label">04 — Life</p>
+    <h1 class="page-title">Outside of <em>work</em></h1>
+    <p class="page-intro">Things I'm doing, places I've been, and everything in between.</p>
+
+    <div class="life-list">
+
+      <!-- Copy and paste this block to add a new entry -->
+      <a href="#" class="life-item">
+        <div>
+          <p class="life-date">2026</p>
+          <p class="life-tag">Travel</p>
+        </div>
+        <div>
+          <h2 class="life-title">Entry title</h2>
+          <p class="life-excerpt">A sentence or two about this entry.</p>
+          <span class="life-arrow">Read →</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Dan Zhu</p>
+    <p>danzhu.org</p>
+  </footer>
+</body>
+</html>
