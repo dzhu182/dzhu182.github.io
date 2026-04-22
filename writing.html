@@ -5,33 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Writing — Dan Zhu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root { --bg: #f0f6f8; --ink: #0d2b33; --muted: #5a8a96; --accent: #046a87; --line: #c0d8e0; }
     body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', sans-serif; min-height: 100vh; }
+
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; background: var(--bg); border-bottom: 1px solid var(--line); }
-    .nav-name { font-family: 'Open Sans', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+    .nav-name { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a { font-family: 'Open Sans', sans-serif; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a { font-size: 0.75rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-    .page { max-width: 1100px; margin: 0 auto; padding: 10rem 3rem 6rem; }
-    .page-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
-    .page-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 600; line-height: 1.1; margin-bottom: 1.5rem; }
+
+    .page { max-width: 1100px; margin: 0 auto; padding: 8rem 3rem 6rem; }
+    .page-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .page-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; margin-bottom: 2.5rem; }
     .page-title em { font-style: italic; color: var(--accent); font-weight: 300; }
-    .page-intro { font-size: 1.05rem; font-style: italic; color: var(--muted); max-width: 520px; line-height: 1.7; margin-bottom: 4rem; }
-    .writing-list { border-top: 1px solid var(--line); }
-    .writing { display: grid; grid-template-columns: 180px 1fr; gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; transition: all 0.2s; }
-    .writing:hover .writing-title { color: var(--accent); }
-    .writing:hover .writing-arrow { transform: translateX(4px); color: var(--accent); }
-    .writing-date { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
-    .writing-tag { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
-    .writing-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; transition: color 0.2s; }
-    .writing-excerpt { font-size: 0.92rem; font-style: italic; color: var(--muted); line-height: 1.7; margin-bottom: 0.75rem; }
-    .writing-arrow { font-size: 0.75rem; color: var(--muted); transition: all 0.2s; display: inline-block; }
-    footer { border-top: 1px solid var(--line); padding: 2rem 3rem; display: flex; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
+
+    .intro-full { border-top: 1px solid var(--line); padding: 2rem 0; }
+    .intro-full p { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--ink); margin-bottom: 1rem; }
+    .intro-full p:last-child { margin-bottom: 0; }
+
+    .entries-header { border-top: 1px solid var(--line); padding: 1.5rem 0 0; }
+    .entries-header h2 { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+    .entry-row {
+      display: grid;
+      grid-template-columns: 3fr 1fr 0.8fr auto;
+      gap: 2rem;
+      align-items: center;
+      padding: 1.25rem 0.5rem;
+      border-top: 1px solid var(--line);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.15s;
+    }
+    .entry-row:hover { background: rgba(4, 106, 135, 0.04); }
+    .entry-row:hover .entry-title { color: var(--accent); }
+    .entry-row:hover .entry-arrow { color: var(--accent); transform: translateX(4px); }
+
+    .entry-title { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; transition: color 0.15s; }
+    .entry-blurb { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.5; }
+    .entry-tag { font-size: 0.78rem; font-weight: 400; color: var(--muted); }
+    .entry-date { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; }
+    .entry-arrow { font-size: 0.8rem; color: var(--line); transition: all 0.15s; display: inline-block; }
+
+    footer { border-top: 1px solid var(--line); padding: 2rem 3rem; display: flex; justify-content: space-between; max-width: 1100px; margin: 0 auto; margin-top: 4rem; }
     footer p { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); }
-    @media (max-width: 768px) { nav { padding: 1.25rem 1.5rem; } .nav-links { gap: 1.5rem; } .page { padding: 7rem 1.5rem 4rem; } .writing { grid-template-columns: 1fr; gap: 0.5rem; } }
+
+    @media (max-width: 768px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .page { padding: 7rem 1.5rem 4rem; }
+      .entry-row { grid-template-columns: 1fr; gap: 0.25rem; }
+      .entry-arrow { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -48,36 +76,36 @@
   <main class="page">
     <p class="page-label">03 — Writing</p>
     <h1 class="page-title">Essays & <em>reflections</em></h1>
-    <p class="page-intro">Longer essays, blog posts, and pieces that don't quite fit anywhere else.</p>
 
-    <div class="writing-list">
-
-      <!-- Copy and paste this block to add a new piece -->
-      <a href="#" class="writing">
-        <div class="writing-meta">
-          <p class="writing-date">2026</p>
-          <p class="writing-tag">Essay</p>
-        </div>
-        <div class="writing-content">
-          <h2 class="writing-title">Title of your first piece</h2>
-          <p class="writing-excerpt">A sentence or two about what this piece is about. What question does it explore?</p>
-          <span class="writing-arrow">Read →</span>
-        </div>
-      </a>
-
-      <a href="#" class="writing">
-        <div class="writing-meta">
-          <p class="writing-date">2025</p>
-          <p class="writing-tag">Reflection</p>
-        </div>
-        <div class="writing-content">
-          <h2 class="writing-title">Title of another piece</h2>
-          <p class="writing-excerpt">A sentence or two about what this piece is about. What question does it explore?</p>
-          <span class="writing-arrow">Read →</span>
-        </div>
-      </a>
-
+    <div class="intro-full">
+      <p>Longer essays, blog posts, and pieces that don't quite fit anywhere else.</p>
     </div>
+
+    <div class="entries-header">
+      <h2>Posts</h2>
+    </div>
+
+    <!-- Copy and paste this block to add a new piece -->
+    <a href="#" class="entry-row">
+      <div>
+        <p class="entry-title">Title of your first piece</p>
+        <p class="entry-blurb">A sentence or two about what this piece is about.</p>
+      </div>
+      <span class="entry-tag">Essay</span>
+      <span class="entry-date">2026</span>
+      <span class="entry-arrow">→</span>
+    </a>
+
+    <a href="#" class="entry-row">
+      <div>
+        <p class="entry-title">Title of another piece</p>
+        <p class="entry-blurb">A sentence or two about what this piece is about.</p>
+      </div>
+      <span class="entry-tag">Reflection</span>
+      <span class="entry-date">2025</span>
+      <span class="entry-arrow">→</span>
+    </a>
+
   </main>
 
   <footer>

@@ -17,42 +17,40 @@
     .nav-links a { font-size: 0.75rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
-    .page { max-width: 1100px; margin: 0 auto; padding: 10rem 3rem 6rem; }
-    .page-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
-    .page-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 600; line-height: 1.1; margin-bottom: 5rem; }
+    .page { max-width: 1100px; margin: 0 auto; padding: 8rem 3rem 6rem; }
+    .page-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .page-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; margin-bottom: 2.5rem; }
     .page-title em { font-style: italic; color: var(--accent); font-weight: 300; }
 
-    .intro-full { border-top: 1px solid var(--line); padding: 3.5rem 0; }
-    .intro-full p { font-size: 1.2rem; font-weight: 300; line-height: 1.9; color: var(--ink); margin-bottom: 1.25rem; }
+    .intro-full { border-top: 1px solid var(--line); padding: 2rem 0; }
+    .intro-full p { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--ink); margin-bottom: 1rem; }
     .intro-full p:last-child { margin-bottom: 0; }
     .intro-full a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
     .intro-full a:hover { border-bottom-color: var(--accent); }
-    .section-label { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); padding-top: 0.3rem; }
-    .intro-text p { font-size: 1.2rem; font-weight: 300; line-height: 1.9; color: var(--ink); margin-bottom: 1.25rem; }
-    .intro-text p:last-child { margin-bottom: 0; }
-    .intro-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
-    .intro-text a:hover { border-bottom-color: var(--accent); }
 
-    .experience-header { border-top: 1px solid var(--line); padding: 2.5rem 0 0; margin-top: 2rem; }
+    .experience-header { border-top: 1px solid var(--line); padding: 1.5rem 0 0; margin-top: 0; }
     .experience-header h2 { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
 
-    .entry { display: grid; grid-template-columns: 200px 1fr; gap: 4rem; padding: 3rem 0; border-top: 1px solid var(--line); }
+    .entry-row {
+      display: grid;
+      grid-template-columns: 3fr 1fr 0.8fr auto;
+      gap: 2rem;
+      align-items: center;
+      padding: 1.25rem 0.5rem;
+      border-top: 1px solid var(--line);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.15s;
+    }
+    .entry-row:hover { background: rgba(4, 106, 135, 0.04); }
+    .entry-row:hover .entry-arrow { color: var(--accent); transform: translateX(4px); }
+    .entry-row:hover .entry-project { color: var(--accent); }
 
-    .entry-logo { display: flex; align-items: flex-start; padding-top: 0.2rem; }
-    .entry-logo img { max-width: 120px; max-height: 50px; object-fit: contain; }
-    .entry-logo-placeholder { font-size: 0.78rem; font-weight: 600; color: var(--muted); }
-
-    .entry-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem; gap: 1rem; }
-    .entry-org { font-size: 1.1rem; font-weight: 600; color: var(--ink); }
-    .entry-date { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--muted); white-space: nowrap; }
-    .entry-role { font-size: 0.78rem; font-weight: 400; color: var(--muted); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.08em; }
-
-    .project { margin-bottom: 1.5rem; padding-left: 1rem; border-left: 2px solid var(--line); }
-    .project:last-child { margin-bottom: 0; }
-    .project-title { font-size: 0.88rem; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; }
-    .project ul { list-style: none; padding: 0; }
-    .project ul li { font-size: 0.92rem; font-weight: 300; line-height: 1.8; color: var(--ink); padding-left: 1rem; position: relative; margin-bottom: 0.3rem; }
-    .project ul li::before { content: "—"; position: absolute; left: 0; color: var(--muted); }
+    .entry-project { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; transition: color 0.15s; }
+    .entry-blurb { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.5; }
+    .entry-org { font-size: 0.82rem; font-weight: 400; color: var(--muted); }
+    .entry-date { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; }
+    .entry-arrow { font-size: 0.8rem; color: var(--line); transition: all 0.15s; display: inline-block; }
 
     footer { border-top: 1px solid var(--line); padding: 2rem 3rem; display: flex; justify-content: space-between; max-width: 1100px; margin: 0 auto; margin-top: 4rem; }
     footer p { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); }
@@ -61,8 +59,8 @@
       nav { padding: 1.25rem 1.5rem; }
       .nav-links { gap: 1.5rem; }
       .page { padding: 7rem 1.5rem 4rem; }
-      .intro-section, .entry { grid-template-columns: 1fr; gap: 1.5rem; }
-      .entry-header { flex-direction: column; gap: 0.25rem; }
+      .entry-row { grid-template-columns: 1fr; gap: 0.25rem; }
+      .entry-arrow { display: none; }
     }
   </style>
 </head>
@@ -83,129 +81,72 @@
 
     <div class="intro-full">
       <p>I recently left BCG and am taking 3 months off before my Stanford classes start in September. While I'm open to full or part time roles for January 2027 and onwards, if you have something interesting in the meantime, I would love to discuss!</p>
-      <p>I also offer coaching services at $80 an hour to folks applying for consulting jobs and MBA programs.</p>
-      <p>Email me at <a href="mailto:danielzhuwork@gmail.com">danielzhuwork@gmail.com</a>.</p>
+      <p>I also offer coaching services at $80 an hour to folks applying for consulting jobs and MBA programs. Email me at <a href="mailto:danielzhuwork@gmail.com">danielzhuwork@gmail.com</a>.</p>
     </div>
 
     <div class="experience-header">
       <h2>Experience</h2>
     </div>
 
-    <div class="entry">
-      <div class="entry-logo">
-        <!-- Replace with: <img src="assets/images/bcg-logo.png" alt="BCG" /> -->
-        <span class="entry-logo-placeholder">BCG</span>
+    <a href="work/bcg-insurer.html" class="entry-row">
+      <div>
+        <p class="entry-project">Operational strategy for America's fourth-largest healthcare insurer</p>
+        <p class="entry-blurb">Designed a utilization management model to prevent 100K annual care denials and identified $200M in savings opportunities.</p>
       </div>
-      <div class="entry-body">
-        <div class="entry-header">
-          <span class="entry-org">Boston Consulting Group</span>
-          <span class="entry-date">Sep 2023 — Present</span>
-        </div>
-        <p class="entry-role">Consultant, West Coast Healthcare Practice</p>
-        <div class="project">
-          <p class="project-title">Operational strategy for America's fourth-largest healthcare insurer</p>
-          <ul>
-            <li>Designed utilization management model to prevent 100K care denials for 25M patients every year</li>
-            <li>Identified $200M in annual savings through proactive care management of high-cost conditions</li>
-            <li>Interviewed nurses, doctors, and regulators across 30 states to surface state-specific opportunities</li>
-          </ul>
-        </div>
-        <div class="project">
-          <p class="project-title">Mental health strategy for California Health and Human Services</p>
-          <ul>
-            <li>Co-authored 57-page vision for an integrated behavioral health ecosystem across California</li>
-            <li>Developed program enabling CA schools to bill insurance companies directly for care provided</li>
-            <li>Helped distribute $400M in grants to hire and train behavioral health providers statewide</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      <span class="entry-org">Boston Consulting Group</span>
+      <span class="entry-date">Sep 2023 — Present</span>
+      <span class="entry-arrow">→</span>
+    </a>
 
-    <div class="entry">
-      <div class="entry-logo">
-        <!-- Replace with: <img src="assets/images/ahs-logo.png" alt="Asian Health Services" /> -->
-        <span class="entry-logo-placeholder">Asian Health Services</span>
+    <a href="work/bcg-ca-behavioral-health.html" class="entry-row">
+      <div>
+        <p class="entry-project">Mental health strategy for California Health and Human Services</p>
+        <p class="entry-blurb">Co-authored a 57-page behavioral health vision for California and helped distribute $400M in provider grants.</p>
       </div>
-      <div class="entry-body">
-        <div class="entry-header">
-          <span class="entry-org">Asian Health Services</span>
-          <span class="entry-date">Jul — Sep 2025</span>
-        </div>
-        <p class="entry-role">Strategic Initiatives Fellow</p>
-        <div class="project">
-          <p class="project-title">Integrated community clinic and health insurance launch</p>
-          <ul>
-            <li>Supported launch of integrated clinic and health plan for 1,000+ high-need seniors</li>
-            <li>Led design of care management model using proactive outreach to reduce post-procedure complications</li>
-            <li>Built all claims management and transportation operating models; led vendor selection</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      <span class="entry-org">Boston Consulting Group</span>
+      <span class="entry-date">Sep 2023 — Present</span>
+      <span class="entry-arrow">→</span>
+    </a>
 
-    <div class="entry">
-      <div class="entry-logo">
-        <!-- Replace with: <img src="assets/images/practice-logo.png" alt="Bay Area Medical Practice" /> -->
-        <span class="entry-logo-placeholder">Bay Area Medical Practice</span>
+    <a href="work/ahs.html" class="entry-row">
+      <div>
+        <p class="entry-project">Integrated community clinic and health insurance launch</p>
+        <p class="entry-blurb">Supported launch of an integrated clinic and health plan for 1,000+ high-need seniors, leading care management design and vendor selection.</p>
       </div>
-      <div class="entry-body">
-        <div class="entry-header">
-          <span class="entry-org">Bay Area Medical Practice</span>
-          <span class="entry-date">May 2020 — Aug 2023</span>
-        </div>
-        <p class="entry-role">Co-Founder, Business Manager, Medical Assistant</p>
-        <div class="project">
-          <p class="project-title">Practice operations and growth</p>
-          <ul>
-            <li>Helped start the practice and led day-to-day clinic operations as a medical assistant</li>
-            <li>Negotiated contracts with 14 insurers and established referral relationships with 50+ practices and hospitals</li>
-            <li>Executed acquisition of a regional competitor for $100K, increasing patient base by 35%</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      <span class="entry-org">Asian Health Services</span>
+      <span class="entry-date">Jul — Sep 2025</span>
+      <span class="entry-arrow">→</span>
+    </a>
 
-    <div class="entry">
-      <div class="entry-logo">
-        <!-- Replace with: <img src="assets/images/kipp-logo.png" alt="KIPP" /> -->
-        <span class="entry-logo-placeholder">KIPP Public Schools</span>
+    <a href="work/medical-practice.html" class="entry-row">
+      <div>
+        <p class="entry-project">Practice operations and growth</p>
+        <p class="entry-blurb">Co-founded and ran a Bay Area medical practice, negotiating 14 insurer contracts and executing a $100K competitor acquisition.</p>
       </div>
-      <div class="entry-body">
-        <div class="entry-header">
-          <span class="entry-org">KIPP Public Schools</span>
-          <span class="entry-date">Jan — Apr 2023</span>
-        </div>
-        <p class="entry-role">Behavioral Health Program Design</p>
-        <div class="project">
-          <p class="project-title">Behavioral health program launch</p>
-          <ul>
-            <li>Designed behavioral health program for 6,500 students, teachers, and staff across 18 charter schools</li>
-            <li>Led year 1 implementation, reducing reported mental health symptoms and employee turnover by 25%</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      <span class="entry-org">Bay Area Medical Practice</span>
+      <span class="entry-date">May 2020 — Aug 2023</span>
+      <span class="entry-arrow">→</span>
+    </a>
 
-    <div class="entry">
-      <div class="entry-logo">
-        <!-- Replace with: <img src="assets/images/sfdph-logo.png" alt="SF DPH" /> -->
-        <span class="entry-logo-placeholder">SF Dept. of Public Health</span>
+    <a href="work/kipp.html" class="entry-row">
+      <div>
+        <p class="entry-project">Behavioral health program launch</p>
+        <p class="entry-blurb">Designed and launched a behavioral health program for 6,500 students and staff across 18 charter schools, reducing mental health symptoms and turnover by 25%.</p>
       </div>
-      <div class="entry-body">
-        <div class="entry-header">
-          <span class="entry-org">SF Department of Public Health</span>
-          <span class="entry-date">Apr — Jun 2023</span>
-        </div>
-        <p class="entry-role">Behavioral Health Program Assessment</p>
-        <div class="project">
-          <p class="project-title">School mental health landscape assessment</p>
-          <ul>
-            <li>Assessed existing mental health offerings across 227 schools</li>
-            <li>Sourced community solutions and managed RFP process</li>
-          </ul>
-        </div>
+      <span class="entry-org">KIPP Public Schools</span>
+      <span class="entry-date">Jan — Apr 2023</span>
+      <span class="entry-arrow">→</span>
+    </a>
+
+    <a href="work/sfdph.html" class="entry-row">
+      <div>
+        <p class="entry-project">School mental health landscape assessment</p>
+        <p class="entry-blurb">Assessed mental health offerings across 227 San Francisco schools and managed an RFP process to source community solutions.</p>
       </div>
-    </div>
+      <span class="entry-org">SF Department of Public Health</span>
+      <span class="entry-date">Apr — Jun 2023</span>
+      <span class="entry-arrow">→</span>
+    </a>
 
   </main>
 
